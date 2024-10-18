@@ -92,7 +92,7 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 
 Feel free to reach out for collaboration or discussion:
 - GitHub: [@imankii01](https://github.com/imankii01)
-- Email: [your-email@example.com]
+- Email: [private.ankit047@gmail.com]
 
 ---
 
