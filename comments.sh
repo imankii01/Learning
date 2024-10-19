@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Comments are not visible :running"
 #this is a comment.
 : '
 This is 
