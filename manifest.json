@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Automatic Random Search",
+    "version": "1.0",
+    "description": "Automatically performs random searches periodically.",
+    "permissions": ["storage", "tabs", "alarms"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
+  
