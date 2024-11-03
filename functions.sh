@@ -20,11 +20,12 @@ configuration(){
 configuration
 
 
-function deploy{
+function deploy(){
     # deploy code
+    echo "${1}"
 
 echo "deploy code1"
 echo "deploy code2"
 echo "deploy code3"
 }
-deploy
+deploy "webapplication"
