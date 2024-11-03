@@ -1,43 +1,32 @@
 // Array of random search topics
 const topics = ["space exploration", "quantum mechanics", "AI advancements", "deep-sea creatures", "ancient civilizations"];
 
-// Track the timer
+// Track the interval ID for clearing the interval later
 let searchIntervalId = null;
 
-// Get a random topic that hasn't been used recently
-async function getRandomSearch() {
-  const { pastSearches = [] } = await chrome.storage.local.get("pastSearches");
-
-  // Filter to exclude already-used topics
-  const unusedTopics = topics.filter(topic => !pastSearches.includes(topic));
-  const topic = unusedTopics.length > 0
-    ? unusedTopics[Math.floor(Math.random() * unusedTopics.length)]
-    : topics[Math.floor(Math.random() * topics.length)];
-
-  pastSearches.push(topic);
-  if (unusedTopics.length <= 1) {
-    await chrome.storage.local.set({ pastSearches: [] });
-  } else {
-    await chrome.storage.local.set({ pastSearches });
-  }
-  return topic;
+// Function to get a random topic
+function getRandomTopic() {
+  return topics[Math.floor(Math.random() * topics.length)];
 }
 
-// Perform the random search
-async function performRandomSearch() {
-  const query = await getRandomSearch();
+// Function to perform a random search
+function performRandomSearch() {
+  const query = getRandomTopic();
   chrome.tabs.create({ url: `https://www.bing.com/search?q=${encodeURIComponent(query)}` });
 }
 
-// Start the auto-search with the specified interval in seconds
+// Function to start auto-search with specified interval (in seconds)
 function startAutoSearch(intervalSeconds) {
-  stopAutoSearch(); // Clear any existing interval
+  // Clear any existing interval before starting a new one
+  if (searchIntervalId) clearInterval(searchIntervalId);
+
+  // Start a new interval
   searchIntervalId = setInterval(performRandomSearch, intervalSeconds * 1000);
 }
 
-// Stop the auto-search
+// Function to stop the auto-search
 function stopAutoSearch() {
-  if (searchIntervalId !== null) {
+  if (searchIntervalId) {
     clearInterval(searchIntervalId);
     searchIntervalId = null;
   }
