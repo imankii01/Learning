@@ -22,7 +22,9 @@ configuration
 
 function deploy(){
     # deploy code
+    echo "${0}"
     echo "${1}"
+    echo "${FUNCNAME}"
 
 echo "deploy code1"
 echo "deploy code2"
