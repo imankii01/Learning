@@ -6,4 +6,4 @@ function install (){
     echo "installing ${1}"
     echo "executing ${packageName} in ${FUNCNAME}"
 }
-install "testing"
+install "testing" ß
