@@ -1,9 +1,19 @@
 #!/bin/bash
 packageName="nginx"
-function install (){
-
-    echo "executing ${FUNCNAME} - START"
+function install(){
+    local myname="gaurav"
     echo "installing ${1}"
-    echo "executing ${packageName} in ${FUNCNAME}"
 }
-install "testing" ß
+
+function configuration(){
+    packageName="tomcat"
+    echo "config ${1}"
+}
+
+echo "first ${packageName}"
+echo "myname = ${myname}"
+install "${packageName}"
+echo "myname = ${myname}"
+echo "second ${packageName}"
+configuration "${packageName}"
+echo "third ${packageName}"
